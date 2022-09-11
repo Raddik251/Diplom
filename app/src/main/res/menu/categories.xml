@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/catEuropea"
+        android:title="@string/catEuropean"/>
+    <item android:id="@+id/catAsian"
+        android:title="@string/catAsian"/>
+    <item android:id="@+id/catPanAsian"
+        android:title="@string/catPanAsian"/>
+    <item android:id="@+id/catEastern"
+        android:title="@string/catEastern"/>
+    <item android:id="@+id/catAmerican"
+        android:title="@string/catAmerican"/>
+    <item android:id="@+id/catRussian"
+        android:title="@string/catRussian"/>
+    <item android:id="@+id/catMediterranean"
+        android:title="@string/catMediterranean"/>
+</menu>

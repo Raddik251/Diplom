@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/commonMargin"
+        android:contentDescription="@string/description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/netology" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleRecipe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/commonMargin"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="@dimen/commonTextSize"
+        app:layout_constraintEnd_toStartOf="@id/options"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
+        app:layout_constraintTop_toTopOf="@id/avatar"
+        tools:text="@string/netologyTitle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/categoryRecipe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/commonMargin"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="@id/avatar"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/titleRecipe"
+        tools:text="@string/dateRecipe" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/authorRecipe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/commonMargin"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/categoryRecipe"
+        tools:text="@string/authorRecipe" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/options"
+        style="@style/Widget.AppCompat.CommonButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/commonMargin"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description"
+        app:icon="@drawable/ic_baseline_more_vert_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar, authorRecipe, options" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/favoriteIcon"
+        style="@style/Widget.AppCompat.LikeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:checkable="true"
+        android:contentDescription="@string/description"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintEnd_toEndOf="@id/options"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

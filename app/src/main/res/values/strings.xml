@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NeRecipe</string>
+    <string name="greeting">NeRecipe</string>
+    <string name="netologyTitle">NeRecipe</string>
+    <string name="dateRecipe">May 21 at 18:36</string>
+    <string name="content">Your recipes</string>
+    <string name="remove">Remove</string>
+    <string name="description">Description</string>
+    <string name="recipeText" translatable="false">Recipe text</string>
+    <string name="recipeEdit">Change</string>
+    <string name="catEuropean">European</string>
+    <string name="catAsian">Asian</string>
+    <string name="catPanAsian">Pan-Asian</string>
+    <string name="catEastern">Eastern</string>
+    <string name="catAmerican">American</string>
+    <string name="catRussian">Russian</string>
+    <string name="catMediterranean">Mediterranean</string>
+    <string name="authorRecipe">Administrator</string>
+</resources>

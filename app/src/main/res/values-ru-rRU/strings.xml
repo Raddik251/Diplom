@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Рецепты</string>
+    <string name="greeting">Рецепты</string>
+    <string name="netologyTitle">Рецепты</string>
+    <string name="content">Ваши рецепты</string>
+    <string name="remove">Удалить</string>
+    <string name="description">Описание</string>
+    <string name="recipeEdit">Изменить</string>
+    <string name="dateRecipe">21 мая 18:36</string>
+    <string name="authorRecipe">Администратор</string>
+    <string name="catEuropean">Европейская</string>
+    <string name="catAsian">Азиатская</string>
+    <string name="catPanAsian">Паназиатская</string>
+    <string name="catEastern">Восточная</string>
+    <string name="catAmerican">Американская</string>
+    <string name="catRussian">Русская</string>
+    <string name="catMediterranean">Средиземноморская</string>
+</resources>
