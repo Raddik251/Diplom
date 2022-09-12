@@ -17,17 +17,9 @@
         android:id="@+id/recipeContentFragment"
         android:name="ru.neotology.nerecipe.ui.RecipeContentFragment">
         <argument
-            android:name="initialTitle"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="initialCategory"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
             android:name="initialContent"
             app:argType="string"
-            app:nullable="true" />
+            app:nullable="true"/>
         <action
             android:id="@+id/toFeedFragment"
             app:destination="@id/feedFragment" />
@@ -40,19 +32,19 @@
             app:destination="@id/recipeContentFragment" />
         <argument
             android:name="id"
-            app:argType="integer" />
+            app:argType="long"/>
         <argument
             android:name="title"
-            app:argType="string" />
+            app:argType="string"/>
         <argument
             android:name="content"
-            app:argType="string" />
+            app:argType="string"/>
         <argument
             android:name="author"
-            app:argType="string" />
+            app:argType="string"/>
         <argument
             android:name="category"
-            app:argType="string" />
+            app:argType="string"/>
         <argument
             android:name="favoriteToMe"
             app:argType="boolean" />

@@ -4,10 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Recipe (
-    val id: Int,
-    val title: String = "Название рецепта",
-    val content: String = "Текст рецепта",
-    val author: String = "Администратор",
-    val category: String = "Общая кухня",
+    var id: Long,
+    var title: String,
+    var content: String,
+    var author: String,
+    var category: String,
     var favoriteToMe: Boolean = false
 )

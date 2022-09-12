@@ -29,12 +29,8 @@ class FeedFragment : Fragment() {
             viewModel.onSaveButtonClicked(newRecipeArray[0],newRecipeArray[1],newRecipeArray[2])
         }
 
-        viewModel.navigateToRecipeScreenEvent.observe(this) { initialRecipe ->
-            val direction = FeedFragmentDirections.toRecipeContentFragment(
-                initialRecipe.title,
-                initialRecipe.category,
-                initialRecipe.content
-            )
+        viewModel.navigateToRecipeScreenEvent.observe(this) { initialRecipeContent ->
+            val direction = FeedFragmentDirections.toRecipeContentFragment(initialRecipeContent)
             findNavController().navigate(direction)
         }
 

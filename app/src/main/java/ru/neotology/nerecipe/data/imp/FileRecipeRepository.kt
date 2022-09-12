@@ -21,10 +21,10 @@ class FileRecipeRepository (
         "repo", Context.MODE_PRIVATE
     )
 
-    private var nextId: Int by Delegates.observable(
-        prefs.getInt(NEXT_ID_PREFS_KEY, 0)
+    private var nextId: Long by Delegates.observable(
+        prefs.getLong(NEXT_ID_PREFS_KEY, 0L)
     ) { _, _, newValue ->
-        prefs.edit { putInt(NEXT_ID_PREFS_KEY, newValue) }
+        prefs.edit { putLong(NEXT_ID_PREFS_KEY, newValue) }
     }
 
     private var recipes
@@ -54,7 +54,7 @@ class FileRecipeRepository (
         data = MutableLiveData(recipes)
     }
 
-    override fun favorite(recipeId: Int) {
+    override fun favorite(recipeId: Long) {
         recipes = recipes.map {
             if (it.id != recipeId) it
             else it.copy(
@@ -63,7 +63,7 @@ class FileRecipeRepository (
         }
     }
 
-    override fun remove(recipeId: Int) {
+    override fun remove(recipeId: Long) {
         recipes = recipes.filter { it.id != recipeId }
     }
 

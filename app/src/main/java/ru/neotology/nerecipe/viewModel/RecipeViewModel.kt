@@ -19,7 +19,7 @@ class RecipeViewModel(
 
     val data by repository::data
 
-    val navigateToRecipeScreenEvent = SingleLiveEvent<Recipe>()
+    val navigateToRecipeScreenEvent = SingleLiveEvent<String>()
     val navigateToRecipeSingleScreenEvent = SingleLiveEvent<Recipe>()
 
     var currentRecipe = MutableLiveData<Recipe?>(null)
@@ -28,12 +28,15 @@ class RecipeViewModel(
         if (title.isBlank()) return
 
         val recipe = currentRecipe.value?.copy(
+            title = title,
+            category = category,
             content = content
         ) ?: Recipe(
             id = RecipeRepository.NEW_RECIPE_ID,
             title = title,
-            category = category,
-            content = content
+            content = content,
+            author = "Администратор",
+            category = category
         )
         repository.save(recipe)
         currentRecipe.value = null
@@ -51,7 +54,7 @@ class RecipeViewModel(
 
     override fun onEditClicked(recipe: Recipe) {
         currentRecipe.value = recipe
-        navigateToRecipeScreenEvent.value = recipe
+        navigateToRecipeScreenEvent.value = recipe.content
     }
 
     override fun onSingleRecipeShow(recipe: Recipe) {
