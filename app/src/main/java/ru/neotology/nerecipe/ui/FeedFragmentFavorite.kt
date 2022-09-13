@@ -10,9 +10,10 @@ import androidx.navigation.fragment.findNavController
 import ru.neotology.nerecipe.R
 import ru.neotology.nerecipe.adapter.RecipeAdapter
 import ru.neotology.nerecipe.databinding.FeedFragmentBinding
+import ru.neotology.nerecipe.databinding.FeedFragmentFavoriteBinding
 import ru.neotology.nerecipe.viewModel.RecipeViewModel
 
-class FeedFragment : Fragment() {
+class FeedFragmentFavorite : Fragment() {
 
     private val viewModel by viewModels<RecipeViewModel>()
 
@@ -30,7 +31,7 @@ class FeedFragment : Fragment() {
         }
 
         viewModel.navigateToRecipeScreenEvent.observe(this) { initialRecipe ->
-            val direction = FeedFragmentDirections.toRecipeContentFragment(
+            val direction = FeedFragmentFavoriteDirections.toRecipeContentFragment(
                 initialRecipe.id,
                 initialRecipe.title,
                 initialRecipe.content,
@@ -42,7 +43,7 @@ class FeedFragment : Fragment() {
         }
 
         viewModel.navigateToRecipeSingleScreenEvent.observe(this) { singleRecipe ->
-            val direction = FeedFragmentDirections.toSingleRecipeFragment(
+            val direction = FeedFragmentFavoriteDirections.toSingleRecipeFragment(
                 singleRecipe.id,
                 singleRecipe.title,
                 singleRecipe.content,
@@ -53,36 +54,24 @@ class FeedFragment : Fragment() {
             findNavController().navigate(direction)
         }
 
-        viewModel.navigateToRecipeSearchEvent.observe(this) { partOfTitle ->
-            val direction = FeedFragmentDirections.toFeedFragmentSearch(partOfTitle)
-            findNavController().navigate(direction)
-        }
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FeedFragmentBinding.inflate(layoutInflater, container, false).also { binding ->
+    ) = FeedFragmentFavoriteBinding.inflate(layoutInflater, container, false).also { binding ->
 
         val adapter = RecipeAdapter(viewModel)
-        binding.recipeRecyclerView.adapter = adapter
+        binding.recipeRecyclerViewFavorite.adapter = adapter
         viewModel.data.observe(viewLifecycleOwner) { recipes ->
-            adapter.submitList(recipes)
+            adapter.submitList(recipes.filter { it.favoriteToMe })
         }
 
-        binding.fab.setOnClickListener {
-            viewModel.onAddClicked()
+        binding.fabHome.setOnClickListener {
+            findNavController().navigate(FeedFragmentFavoriteDirections.toFeedFragment())
         }
 
-        binding.fabFavorite.setOnClickListener {
-            findNavController().navigate(FeedFragmentDirections.toFeedFragmentFavorite())
-        }
-
-        binding.fabSearch.setOnClickListener {
-            viewModel.onSearchClicked(binding.textInputLayoutSearch.editText?.text.toString())
-        }
     }.root
 
 }

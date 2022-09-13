@@ -16,4 +16,7 @@
     <string name="catRussian">Russian</string>
     <string name="catMediterranean">Mediterranean</string>
     <string name="authorRecipe">Administrator</string>
+    <string name="inputTitle">Title of the new recipe</string>
+    <string name="inputContent">Text of the new recipe</string>
+    <string name="inputSearch">Search the recipe</string>
 </resources>

@@ -19,13 +19,13 @@ class RecipeViewModel(
 
     val data by repository::data
 
-    val navigateToRecipeScreenEvent = SingleLiveEvent<String>()
+    val navigateToRecipeScreenEvent = SingleLiveEvent<Recipe>()
     val navigateToRecipeSingleScreenEvent = SingleLiveEvent<Recipe>()
+    val navigateToRecipeSearchEvent = SingleLiveEvent<String>()
 
     var currentRecipe = MutableLiveData<Recipe?>(null)
 
     fun onSaveButtonClicked(title: String, category: String, content: String) {
-        if (title.isBlank()) return
 
         val recipe = currentRecipe.value?.copy(
             title = title,
@@ -45,17 +45,27 @@ class RecipeViewModel(
     //region RecipeInreractionListener
 
     fun onAddClicked() {
-        navigateToRecipeScreenEvent.call()
+        navigateToRecipeScreenEvent.value = Recipe(
+            id = 1L,
+            title = "Название не задано",
+            content = "Описание рецепта не задано",
+            author = "",
+            category = "Категория не задана"
+        )
+    }
+
+    fun onSearchClicked(partOfTitle:String) {
+        navigateToRecipeSearchEvent.value = partOfTitle
+    }
+
+    override fun onEditClicked(recipe: Recipe) {
+        currentRecipe.value = recipe
+        navigateToRecipeScreenEvent.value = currentRecipe.value
     }
 
     override fun onFavoriteClicked(recipe: Recipe) = repository.favorite(recipe.id)
 
     override fun onRemoveClicked(recipe: Recipe) = repository.remove(recipe.id)
-
-    override fun onEditClicked(recipe: Recipe) {
-        currentRecipe.value = recipe
-        navigateToRecipeScreenEvent.value = recipe.content
-    }
 
     override fun onSingleRecipeShow(recipe: Recipe) {
         currentRecipe.value = recipe

@@ -12,14 +12,34 @@
         <action
             android:id="@+id/toSingleRecipeFragment"
             app:destination="@id/singleRecipeFragment" />
+        <action
+            android:id="@+id/toFeedFragmentFavorite"
+            app:destination="@id/feedFragmentFavorite" />
+        <action
+            android:id="@+id/toFeedFragmentSearch"
+            app:destination="@id/feedFragmentSearch" />
     </fragment>
     <fragment
         android:id="@+id/recipeContentFragment"
         android:name="ru.neotology.nerecipe.ui.RecipeContentFragment">
         <argument
-            android:name="initialContent"
-            app:argType="string"
-            app:nullable="true"/>
+            android:name="id"
+            app:argType="long"/>
+        <argument
+            android:name="title"
+            app:argType="string"/>
+        <argument
+            android:name="content"
+            app:argType="string"/>
+        <argument
+            android:name="author"
+            app:argType="string"/>
+        <argument
+            android:name="category"
+            app:argType="string"/>
+        <argument
+            android:name="favoriteToMe"
+            app:argType="boolean" />
         <action
             android:id="@+id/toFeedFragment"
             app:destination="@id/feedFragment" />
@@ -51,5 +71,35 @@
         <action
             android:id="@+id/toFeedFragment"
             app:destination="@id/feedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedFragmentFavorite"
+        android:name="ru.neotology.nerecipe.ui.FeedFragmentFavorite">
+        <action
+            android:id="@+id/toFeedFragment"
+            app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/toRecipeContentFragment"
+            app:destination="@id/recipeContentFragment" />
+        <action
+            android:id="@+id/toSingleRecipeFragment"
+            app:destination="@id/singleRecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedFragmentSearch"
+        android:name="ru.neotology.nerecipe.ui.FeedFragmentSearch">
+        <argument
+            android:name="partOfTitle"
+            app:argType="string"
+            app:nullable="true"/>
+        <action
+            android:id="@+id/toFeedFragment"
+            app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/toRecipeContentFragment"
+            app:destination="@id/recipeContentFragment" />
+        <action
+            android:id="@+id/toSingleRecipeFragment"
+            app:destination="@id/singleRecipeFragment" />
     </fragment>
 </navigation>

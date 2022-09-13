@@ -22,8 +22,15 @@ class SingleRecipeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.navigateToRecipeScreenEvent.observe(this) { initialRecipeContent ->
-            val direction = SingleRecipeFragmentDirections.toRecipeContentFragment(initialRecipeContent)
+        viewModel.navigateToRecipeScreenEvent.observe(this) { initialRecipe ->
+            val direction = SingleRecipeFragmentDirections.toRecipeContentFragment(
+                initialRecipe.id,
+                initialRecipe.title,
+                initialRecipe.content,
+                initialRecipe.author,
+                initialRecipe.category,
+                initialRecipe.favoriteToMe
+            )
             findNavController().navigate(direction)
         }
 
@@ -35,16 +42,14 @@ class SingleRecipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ) = RecipeSingleBinding.inflate(layoutInflater, container, false).also { binding ->
 
-        val recipe = args.title?.let {
-            Recipe(
-                id = args.id,
-                title = it,
-                content = args.content,
-                author = args.author,
-                category = args.category,
-                favoriteToMe = args.favoriteToMe
-            )
-        }
+        val recipe = Recipe(
+            id = args.id,
+            title = args.title,
+            content = args.content,
+            author = args.author,
+            category = args.category,
+            favoriteToMe = args.favoriteToMe
+        )
 
         viewModel.data.observe(viewLifecycleOwner) { recipes ->
             if (recipes.find { it.id == recipe.id } == null) findNavController().navigate(

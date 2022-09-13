@@ -16,4 +16,7 @@
     <string name="catAmerican">Американская</string>
     <string name="catRussian">Русская</string>
     <string name="catMediterranean">Средиземноморская</string>
+    <string name="inputSearch">Поиск рецепта</string>
+    <string name="inputTitle">Название нового рецепта</string>
+    <string name="inputContent">Описание нового рецепта</string>
 </resources>

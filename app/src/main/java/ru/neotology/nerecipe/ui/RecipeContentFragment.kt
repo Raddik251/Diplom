@@ -22,8 +22,8 @@ class RecipeContentFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ) = RecipeContentFragmentBinding.inflate(layoutInflater, container, false).also { binding ->
-        binding.editContent.setText(args.initialContent)
-        binding.editContent.requestFocus()
+        binding.categoriesMenu.text = args.category
+        binding.editTitle.requestFocus()
         binding.ok.setOnClickListener {
             onOkButtonClicked(binding)
         }
