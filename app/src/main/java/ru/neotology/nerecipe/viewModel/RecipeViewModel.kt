@@ -60,7 +60,7 @@ class RecipeViewModel(
 
     override fun onEditClicked(recipe: Recipe) {
         currentRecipe.value = recipe
-        navigateToRecipeScreenEvent.value = currentRecipe.value
+        navigateToRecipeScreenEvent.value = recipe
     }
 
     override fun onFavoriteClicked(recipe: Recipe) = repository.favorite(recipe.id)
